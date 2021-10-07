@@ -66,6 +66,7 @@ public class URLRewriteMediatorFactory extends AbstractMediatorFactory {
     private static final QName ATT_OUT_PROPERTY = new QName("outProperty");
     private static final QName ATT_TYPE = new QName("type");
     private static final QName ATT_FRAGMENT = new QName("fragment");
+    private static final QName ATT_RESOLVE = new QName("resolve");
 
     public static final String ACTION_SET = "set";
     public static final String ACTION_APPEND = "append";
@@ -204,6 +205,9 @@ public class URLRewriteMediatorFactory extends AbstractMediatorFactory {
                 handleException("Unknown URL rewrite action type: " + type);
             }
         }
+
+        boolean resolve = Boolean.parseBoolean(actionElement.getAttributeValue(ATT_RESOLVE));
+        action.setResolve(resolve);
 
         return action;
     }
